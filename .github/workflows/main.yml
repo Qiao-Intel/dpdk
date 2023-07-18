@@ -27,7 +27,7 @@ jobs:
       run: git clone https://github.com/dpdk/dpdk.git
       shell: bash
     - name: Run Meson Build
-      run: meson build
+      run: meson -Denable_drivers=common/idpf,net/idpf,net/cpfl,mempool/ring,mempool/stack,mempool/bucket -Dtests=false build
       shell: bash
       working-directory: ./dpdk
     - name: Run Ninja
