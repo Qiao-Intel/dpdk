@@ -26,7 +26,7 @@ jobs:
     - name: Run Meson Build
       run: meson build
       shell: bash
-      #working-directory: ./dpdk
+      working-directory: ./dpdk
     - name: Run Ninja
       run: ninja
       shell: bash
