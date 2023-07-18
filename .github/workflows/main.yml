@@ -24,7 +24,7 @@ jobs:
       run: sudo apt install libnuma-dev
       shell: bash
     - name: Clone DPDK repository
-      run: pwd
+      run: ls
       shell: bash
     - name: Run Meson Build
       run: meson -Denable_drivers=common/idpf,net/idpf,net/cpfl,mempool/ring,mempool/stack,mempool/bucket -Dtests=false build
