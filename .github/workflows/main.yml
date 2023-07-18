@@ -5,6 +5,7 @@ jobs:
     name: My Job
     runs-on: ubuntu-latest
     steps:
+    - uses: actions/checkout@v1
     - name: Run apt update
       run: sudo apt update
       shell: bash
