@@ -5,8 +5,6 @@ jobs:
     name: My Job
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
-    - uses: Qiao-Intel/dpdk@main
     - name: Run apt update
       run: sudo apt update
       shell: bash
@@ -26,7 +24,7 @@ jobs:
       run: sudo apt install libnuma-dev
       shell: bash
     - name: Clone DPDK repository
-      run: ls
+      run: git clone https://github.com/Qiao-Intel/dpdk.git
       shell: bash
     - name: Run Meson Build
       run: meson -Denable_drivers=common/idpf,net/idpf,net/cpfl,mempool/ring,mempool/stack,mempool/bucket -Dtests=false build
