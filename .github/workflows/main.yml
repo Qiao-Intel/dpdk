@@ -20,6 +20,9 @@ jobs:
     - name: Install Py ELF Tools
       run: sudo pip3 install pyelftools
       shell: bash
+    - name: Install NUMA
+      run: sudo apt install libnuma-dev
+      shell: bash
     - name: Clone DPDK repository
       run: git clone https://github.com/dpdk/dpdk.git
       shell: bash
