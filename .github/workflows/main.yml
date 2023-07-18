@@ -23,9 +23,12 @@ jobs:
     - name: Install NUMA
       run: sudo apt install libnuma-dev
       shell: bash
-    - name: Clone DPDK repository
-      run: git clone https://github.com/dpdk/dpdk.git
-      shell: bash
+    # copy git 仓库到虚拟机上
+    - name: 'Checkout codes'
+      uses: actions/checkout@v1
+    #- name: Clone DPDK repository
+    #  run: git clone https://github.com/dpdk/dpdk.git
+     # shell: bash
     - name: Run Meson Build
       run: meson -Denable_drivers=common/idpf,net/idpf,net/cpfl,mempool/ring,mempool/stack,mempool/bucket -Dtests=false build
       shell: bash
