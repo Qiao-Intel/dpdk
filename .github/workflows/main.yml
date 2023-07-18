@@ -1,1 +1,40 @@
-
+name: "DPDK Deploy"
+on: [push,pull_request]
+jobs:
+ my-job:
+    name: My Job
+    runs-on: ubuntu-latest
+    steps:
+    - name: Run apt update
+      run: sudo apt update
+      shell: bash
+    - name: Install Python3
+      run: sudo apt install -y python3 python3-pip
+      shell: bash
+    - name: Install Meson via Python3
+      run: sudo pip3 install meson
+      shell: bash
+    - name: Install Ninja Build
+      run: sudo apt install ninja-build
+      shell: bash
+    - name: Install Py ELF Tools
+      run: sudo pip3 install pyelftools
+      shell: bash
+    - name: Clone DPDK repository
+      run: git clone https://github.com/dpdk/dpdk.git
+      shell: bash
+    - name: Run Meson Build
+      run: meson build
+      shell: bash
+      working-directory: ./dpdk
+    - name: Run Ninja
+      run: ninja
+      shell: bash
+      working-directory: ./dpdk/build
+    - name: Run Ninja install as root
+      run: sudo ninja install
+      shell: bash
+      working-directory: ./dpdk/build
+    - name: Link libraries
+      run: sudo ldconfig
+      shell: bash
