@@ -2469,7 +2469,7 @@ cpfl_p2p_queue_info_init(struct cpfl_vport *cpfl_vport,
 }
 
 int
-cpfl_alloc_dma_mem_batch(struct idpf_dma_mem *orig_dma, struct idpf_dma_mem *dma, uint32_t size,
+cpfl_alloc_dma_mem_batch(struct idpf_dma_mem *orig_dma, struct idpf_dma_mem *dma, uint64_t size,
 			 int batch_size)
 {
 	int i;

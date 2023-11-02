@@ -249,7 +249,7 @@ int cpfl_vc_create_ctrl_vport(struct cpfl_adapter_ext *adapter);
 int cpfl_config_ctlq_rx(struct cpfl_adapter_ext *adapter);
 int cpfl_config_ctlq_tx(struct cpfl_adapter_ext *adapter);
 int cpfl_alloc_dma_mem_batch(struct idpf_dma_mem *orig_dma, struct idpf_dma_mem *dma,
-			     uint32_t size, int batch_size);
+			     uint64_t size, int batch_size);
 
 #define CPFL_DEV_TO_PCI(eth_dev)		\
 	RTE_DEV_TO_PCI((eth_dev)->device)

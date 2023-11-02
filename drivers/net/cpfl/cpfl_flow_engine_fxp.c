@@ -110,7 +110,10 @@ cpfl_fxp_create(struct rte_eth_dev *dev,
 static inline void
 cpfl_fxp_rule_free(struct rte_flow *flow)
 {
-	rte_free(flow->rule);
+	struct cpfl_rule_info_meta *rim;
+
+	rim = (struct cpfl_rule_info_meta *)flow->rule;
+	rte_free(rim);
 	flow->rule = NULL;
 }
 
@@ -128,7 +131,7 @@ cpfl_fxp_destroy(struct rte_eth_dev *dev,
 	struct cpfl_vport *vport;
 	struct cpfl_repr *repr;
 
-	rim = flow->rule;
+	rim = (struct cpfl_rule_info_meta *)flow->rule;
 	if (!rim) {
 		rte_flow_error_set(error, EINVAL,
 				   RTE_FLOW_ERROR_TYPE_HANDLE, NULL,
